@@ -1,0 +1,29 @@
+<h2 class="page-header">Events</h2>
+
+<table class = "table table-hover">
+  <tr>
+    <th height = "35">Event</th>
+    <th width = "20%" height = "35">Date</th> 
+    <th>Venue</th>
+    <th>Category</th>
+    <th></th>
+  </tr>
+
+  {{#each data}}
+  <tr>
+    <td>{{Title}}</td>
+    <td>{{Date}}</td>
+    <td>{{Venue}}</td>
+    <td>{{Category}}</td>
+    <td>
+      <form action="/addMarkEvent" method="post">
+        <input type="hidden" name="title" value="{{Title}}"/>
+        <input type="hidden" name="date" value= "{{Date}}"/>
+        <input type="hidden" name="venue" value = "{{Venue}}"/>
+        <input type="hidden" name="category" value="{{Category}}"/>
+        <input type="submit" value="Mark" id="submit" class="btn btn-default"/>
+      </form>
+    </td>
+  </tr>
+  {{/each}}
+</table>

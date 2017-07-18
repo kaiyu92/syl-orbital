@@ -1,0 +1,36 @@
+<!--<h2 class="page-header">Profile</h2>
+
+<div>
+     <h2 align="center">View Calendar</h2>
+      <div class="myCalendar" id="calendar"></div>
+      <script src="/js/moment.min.js"></script>
+      <script type="text/javascript" src="/js/ulkof.js"></script>
+      <br/>
+</div>-->
+
+<div>
+<table class = "table table-hover">
+  <tr>
+    <th height = "35">Event</th>
+    <th width = "20%" height = "35">Date</th> 
+    <th>Venue</th>
+    <th>Category</th>
+    <th></th>
+  </tr>
+
+  {{# each events}}
+  <tr>
+    <td>{{title}}</td>
+    <td>{{date}}</td>
+    <td>{{venue}}</td>
+    <td>{{category}}</td>
+    <td>
+      <form action="/deleteEvent" method="post">
+        <input type="hidden" name="event_id" value="{{_id}}"/>
+        <input type="submit" value="Delete" id="submit" class="btn btn-default"/>
+      </form>
+    </td>
+  </tr>
+  {{/each}}
+</table>
+</div>

@@ -1,0 +1,31 @@
+ <h2 class="page-header">Submit Request</h2>
+
+ <div>
+  <form method="POST" action = "/new-request">
+    <label>First Name:</label>
+    <input type="text" name="name"><br>
+    <label>Organisation: </label>
+    <input type="text" name="org"><br>
+    <label> Your Event Details: </label>
+    <input type="text" name="eventDetails"><br>
+    <label> Event Date: </label>
+    <input type ="text" name ="date"><br>
+    <button type="submit" id="submitButton" class="btn btn-default">Submit</button>
+  </form>
+ </div>
+
+<section class="get">
+    <h3>Get Data</h3>
+    <a href="/get-request">LOAD DATA</a> <p></p>
+    <div>
+        {{# each items }}
+            <article class="item">
+                <div>Name: {{ this.name }}</div>
+                <div>Organisation: {{ this.org }}</div>
+                <div>Event Details: {{ this.content }}</div>
+                <div>Event Date: {{ this.date }}</div>
+                <div>ID: {{ this._id }}</div><br>
+            </article>
+        {{/each}}
+    </div>
+</section>
