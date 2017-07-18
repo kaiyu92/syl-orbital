@@ -215,7 +215,7 @@ router.post('/addMarkEvent', isLoggedIn, function(req, res, next) {
 //=====================Profile========================
 //Get all the marked event by the user
 router.get('/markedEvent', isLoggedIn, function(req, res){
-   Event.find()
+   Event.find({ username: req.user.username })
       .then(function(doc) {
         res.render('profile', {events: doc});
       })
