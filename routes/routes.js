@@ -2,7 +2,7 @@ var express = require('express');
 var fs = require('fs');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-//var chrono = require('chrono-node');
+// var chrono = require('chrono-node');
 
 var Event = require('../models/Event'); //database
 var User = require('../models/User');
@@ -52,9 +52,14 @@ router.get('/', function(req, res){
 //=====================Index========================
 
 router.get('/index', isLoggedIn, function(req, res) {
-  res.render('index');
+  UserData.find()
+     .then(function(doc) {
+       res.render('index', {items: doc});
+     });
+  //res.render('index');
 });
 
+//(optional)
 //Get the user submit request
 router.get('/get-request', function(req, res, next) {
  UserData.find()
@@ -203,7 +208,7 @@ router.post('/addMarkEvent', isLoggedIn, function(req, res, next) {
 
       markedEvent.save();
       req.flash('success_msg', 'Successfully marked \"' + req.body.title + '\"');
-      //console.log(chrono.parse(req.body.date));
+      // console.log(chrono.parse(req.body.date));
     }
   res.redirect('/event');  
     
