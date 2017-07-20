@@ -52,7 +52,7 @@ router.get('/', function(req, res){
 //=====================Index========================
 
 router.get('/index', isLoggedIn, function(req, res) {
-  UserData.find()
+  UserData.find({ user: req.user.username })
      .then(function(doc) {
        res.render('index', {items: doc});
      });
@@ -74,7 +74,8 @@ router.post('/new-request', function(req, res, next) {
     name: req.body.name,
     org: req.body.org,
     content: req.body.eventDetails,
-    date: req.body.date
+    date: req.body.date,
+    user: req.user.username
   };
 
   var data = new UserData(item);
@@ -222,7 +223,7 @@ router.post('/addMarkEvent', isLoggedIn, function(req, res, next) {
 router.get('/markedEvent', isLoggedIn, function(req, res){
    Event.find({ username: req.user.username })
       .then(function(doc) {
-        res.render('profile', {events: doc});
+        res.render('profile', {markedEvents: doc});
       })
 });
 

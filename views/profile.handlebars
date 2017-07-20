@@ -1,12 +1,22 @@
-<!--<h2 class="page-header">Profile</h2>
+<h2 class="page-header">Profile</h2>
 
 <div>
-     <h2 align="center">View Calendar</h2>
+     <h3 align="center">View Calendar</h3>
       <div class="myCalendar" id="calendar"></div>
       <script src="/js/moment.min.js"></script>
       <script type="text/javascript" src="/js/ulkof.js"></script>
+      <script type="text/javascript">
+        var a = [];
+        var b = [];
+        {{# each markedEvents}}
+          a.push("{{title}}")
+          b.push("{{date}}");
+        {{/each}}
+        MYLIBRARY.init([a, b]);
+        MYLIBRARY.displayCalendar();
+      </script>
       <br/>
-</div>-->
+</div>
 
 <div>
 <table class = "table table-hover">
@@ -18,7 +28,7 @@
     <th></th>
   </tr>
 
-  {{# each events}}
+  {{# each markedEvents}}
   <tr>
     <td>{{title}}</td>
     <td>{{date}}</td>

@@ -1,6 +1,4 @@
 
-
-
 !function() {
 
   var today = moment();
@@ -331,32 +329,88 @@ function parseResults()
   return data;		
 }
 
-!function() {
+
+var MYLIBRARY = MYLIBRARY || (function() {
+  var _args = {};
+  return {
+    init: function(Args) {
+      _args = Args;
+    },
+    displayCalendar: function() {
+      
+      // var data = parseResults();   
+      // console.log("data:");    
+      // console.log(data);
+      var data = [];
+      if(_args.length !== 0)
+      {
+        for(let i = 0; i < _args[0].length; i++)
+        {
+          var d = new Date((_args[1])[i]);
+          if(d.toString() !== "Invalid Date" )
+          {
+            var entry = { eventName: (_args[0])[i], calendar: 'Marked Event', color: 'green', date: moment(d.getFullYear() 
+                                                                    + "-" 
+                                                                    + (d.getMonth() + 1)
+                                                                    + "-" 
+                                                                    + d.getDate()) };
+            data.push(entry);
+          }
+        }
+      }
+
+      // console.log(_args);
+      // console.log((_args[1]));
+      // var d = new Date((_args[1])[2]);
+      // console.log(d.getMonth());
+      // var data = [    
+      //   { eventName: 'NUS Alumni Orchestra', color: 'green', date: moment("2017-06-25") },
+      //   { eventName: 'ADAC 2017 Music Concert', color: 'green', date: moment("2017-06-16") },
+      //   { eventName: 'Sing\'Theatre Academy Open Mic Night',color: 'green', date: moment("2017-06-19") },      
+      //   // { eventName: 'NUS Alumni Orchestra', calendar: 'Available', color: 'green', date: moment("2017-06-25") },
+      //   // { eventName: 'ADAC 2017 Music Concert', calendar: 'Available', color: 'green', date: moment("2017-06-16") },
+      //   // { eventName: 'Sing\'Theatre Academy Open Mic Night', calendar: 'Available', color: 'green', date: moment("2017-06-19") },
+
+      //   // { eventName: 'Coldplay. A Head Full of Dreams', calendar: 'Sold Out', color: 'blue', date: moment( "2017-04-01") },
+      //   // { eventName: 'Coldplay. A Head Full of Dreams', calendar: 'Sold Out', color: 'blue', date: moment("2017-03-31") },
+      //   // { eventName: 'Ultra Music Festival Singapore', calendar: 'Sold Out', color: 'blue', date: moment("2017-06-11") },
+      //   // { eventName: 'Ultra Music Festival Singapore', calendar: 'Sold Out', color: 'blue', date: moment("2017-06-10") },
+
+      //   // { eventName: 'G-Dragon. Act III: MOTTE', calendar: 'Selling Fast', color: 'yellow', date: moment("2017-06-24") },
+      //   // { eventName: 'Britney Live', calendar: 'Selling Fast', color: 'yellow', date: moment("2017-06-30") }
+
+      // ];
+      var calendar = new Calendar('#calendar', data);
+
+    }
+  };
+}())
+
+// !function() {
   
-  // var data = parseResults();		
-  // console.log("data:");		
-  // console.log(data);
+//   // var data = parseResults();		
+//   // console.log("data:");		
+//   // console.log(data);
+//   var data = [    
+//     { eventName: 'NUS Alumni Orchestra', calendar: 'Available', color: 'green', date: moment("2017-06-25") },
+//     { eventName: 'ADAC 2017 Music Concert', calendar: 'Available', color: 'green', date: moment("2017-06-16") },
+//     { eventName: 'Sing\'Theatre Academy Open Mic Night', calendar: 'Available', color: 'green', date: moment("2017-06-19") },
 
-  var data = [    
-    { eventName: 'NUS Alumni Orchestra', calendar: 'Available', color: 'green', date: moment("2017-06-25") },
-    { eventName: 'ADAC 2017 Music Concert', calendar: 'Available', color: 'green', date: moment("2017-06-16") },
-    { eventName: 'Sing\'Theatre Academy Open Mic Night', calendar: 'Available', color: 'green', date: moment("2017-06-19") },
+//     { eventName: 'Coldplay. A Head Full of Dreams', calendar: 'Sold Out', color: 'blue', date: moment( "2017-04-01") },
+//     { eventName: 'Coldplay. A Head Full of Dreams', calendar: 'Sold Out', color: 'blue', date: moment("2017-03-31") },
+//     { eventName: 'Ultra Music Festival Singapore', calendar: 'Sold Out', color: 'blue', date: moment("2017-06-11") },
+//     { eventName: 'Ultra Music Festival Singapore', calendar: 'Sold Out', color: 'blue', date: moment("2017-06-10") },
 
-    { eventName: 'Coldplay. A Head Full of Dreams', calendar: 'Sold Out', color: 'blue', date: moment( "2017-04-01") },
-    { eventName: 'Coldplay. A Head Full of Dreams', calendar: 'Sold Out', color: 'blue', date: moment("2017-03-31") },
-    { eventName: 'Ultra Music Festival Singapore', calendar: 'Sold Out', color: 'blue', date: moment("2017-06-11") },
-    { eventName: 'Ultra Music Festival Singapore', calendar: 'Sold Out', color: 'blue', date: moment("2017-06-10") },
+//     { eventName: 'G-Dragon. Act III: MOTTE', calendar: 'Selling Fast', color: 'yellow', date: moment("2017-06-24") },
+//     { eventName: 'Britney Live', calendar: 'Selling Fast', color: 'yellow', date: moment("2017-06-30") }
 
-    { eventName: 'G-Dragon. Act III: MOTTE', calendar: 'Selling Fast', color: 'yellow', date: moment("2017-06-24") },
-    { eventName: 'Britney Live', calendar: 'Selling Fast', color: 'yellow', date: moment("2017-06-30") }
+//   ];
 
-  ];
-
-  function addDate(ev) {
+//   function addDate(ev) {
     
-  }
+//   }
 
-  var calendar = new Calendar('#calendar', data);
+//   var calendar = new Calendar('#calendar', data);
 
-}();
+// }();
 
