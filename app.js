@@ -14,6 +14,9 @@ var LocalStrategy = require('passport-local').Strategy;
 var mongoose = require('mongoose');
 var routes = require('./routes/routes');
 
+var PythonShell = require('python-shell');
+var schedule = require('node-schedule');
+
 mongoose.connect('mongodb://localhost/sylorbitaldb');
 var db = mongoose.connection;
 
@@ -74,6 +77,15 @@ app.use(function (req, res, next) {
   res.locals.error = req.flash('error');
   res.locals.user = req.user || null;
   next();
+});
+
+//Run the python script on every wednesday 2.30pm/1430
+var j = schedule.scheduleJob({hour: 14, minute: 30, dayOfWeek: 3}, function() {
+  console.log('running scraper');
+  PythonShell.run('scraper.py', function (err) {
+    if(err) throw err;
+    console.log('finished');
+  });
 });
 
 
