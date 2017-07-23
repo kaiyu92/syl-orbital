@@ -182,7 +182,7 @@ router.post('/registerUser', function(req, res){
 //=====================Event========================
 var event_data;
 
-fs.readFile('../syl-orbital/events_data.out', 'utf8', function(err, data) {
+fs.readFile('./events_data.out', 'utf8', function(err, data) {
   if(err) throw err;
   event_data = JSON.parse(data);
 })
