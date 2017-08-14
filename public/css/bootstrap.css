@@ -44,6 +44,7 @@ template {
 }
 a {
   background-color: transparent;
+  color: #DFDFDF;
 }
 a:active,
 a:hover {
@@ -4957,6 +4958,7 @@ a.badge:focus {
 }
 .nav-pills > li > a > .badge {
   margin-left: 3px;
+  color: #DFDFDF;
 }
 .jumbotron {
   padding-top: 30px;

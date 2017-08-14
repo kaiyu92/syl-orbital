@@ -80,15 +80,13 @@ app.use(function (req, res, next) {
 });
 
 //Run the python script on every wednesday 2.30pm/1430
-var j = schedule.scheduleJob({hour: 14, minute: 30, dayOfWeek: 3}, function() {
+var j = schedule.scheduleJob({hour: 12, minute: 30, dayOfWeek: 1}, function() {
   console.log('running scraper');
   PythonShell.run('scraper.py', function (err) {
     if(err) throw err;
     console.log('finished');
   });
 });
-
-
 
 app.use('/', routes);
 
